@@ -1,0 +1,54 @@
+.auth-group {
+    background-color: $dark;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    max-width: calc(100% - 4rem);
+}
+
+.flex {
+    justify-content: space-between;
+    .auth-group {
+        width: 200px;
+    }
+}
+
+.auth-input-label {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 1.2rem);
+}
+
+.auth-label {
+    font-size: 0.7rem;
+    color: $label;
+}
+
+.auth-input {
+    font-size: 0.9rem;
+    color: $light;
+}
+
+.auth-icon {
+    color: $light-gray-2;
+    font-size: 1.2rem;
+}
+
+.pointer {
+    cursor: pointer;
+    &:hover {
+        color: $blue;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .flex {
+        flex-wrap: wrap;
+        .auth-group {
+            width: calc(100% - 4rem);
+        }
+    }
+}
