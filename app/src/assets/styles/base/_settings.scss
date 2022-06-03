@@ -2,7 +2,10 @@
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
-    transition: 0.2s ease-in-out;
+}
+
+div {
+    transition: 0;
 }
 
 a {
@@ -14,6 +17,7 @@ input, textarea, button {
     border: none;
     outline: none;
     background-color: transparent;
+    transition: 0.2s ease-in-out;
 }
 
 button {

@@ -45,7 +45,7 @@ export const register = (name, lastName, email, password) => {
 
 export const saveUser = (user) => {
     return async (dispatch) => {
-        const res = await noAuthFetch("user/save", user, "PUT");
+        const res = await authFetch("user/save/" + user._id, user, "PUT");
         const body = await res.json();
 
         if (!body.ok) {
@@ -59,7 +59,15 @@ export const saveUser = (user) => {
 
         const { user: newUser } = body;
 
+        console.log(newUser);
+
         dispatch(setUser(newUser));
+
+        Swal.fire({
+            title: "Success",
+            text: "Your profile has been updated",
+            icon: "success",
+        })
     }
 }
 

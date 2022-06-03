@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { startCheckingAuth } from '../redux/actions/auth';
 import { Home } from '../views/Home';
+import { Profile } from '../views/Profile';
+import { MyPokemons } from '../views/MyPokemons';
 
 export default function AppRouter() {
 
@@ -39,6 +41,17 @@ export default function AppRouter() {
               <Register />
             </PublicRouter>
           } />
+          <Route path="/profile" element={
+            <PrivateRouter>
+              <Profile />
+            </PrivateRouter>
+          } />
+          <Route path="/my-pokemons" element={
+            <PrivateRouter>
+              <MyPokemons />
+            </PrivateRouter>
+          }
+          />
         </Routes>
       </BrowserRouter>
     </div>

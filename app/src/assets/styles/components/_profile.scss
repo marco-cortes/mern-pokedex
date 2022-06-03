@@ -1,0 +1,32 @@
+.profile-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    width: 95%;
+    p, h1, h3 {
+        text-align: center;
+    }
+}
+
+.profile-btn {
+    background-color: $blue;
+    color: $light;
+    font-size: 1rem;
+    width: 49%;
+    padding: 1rem 0;
+    border-radius: 30px;
+    margin-top: 1rem;
+    &:hover {
+        background-color: darken($color: $blue, $amount: 10%);
+    }
+}
+
+.profile-form {
+    margin-top: 4rem;
+}
+
+.btn-dark {
+    background-color: $dark-gray;
+    &:hover {
+        background-color: darken($color: $dark-gray, $amount: 10%);
+    }
+}

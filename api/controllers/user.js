@@ -9,6 +9,8 @@ const getUserById = async (req, res) => {
 
     const user = await User.findById(id);
 
+    user.password = "";
+
     res.json({
         ok: true,
         user
@@ -34,13 +36,11 @@ const registerUser = async (req, res) => {
     const u = await user.save();
     const token = await generateJWT(u._id, u.name);
 
+    u.password = "";
+
     res.json({
         ok: true,
-        user: {
-            _id: u._id,
-            name: u.name,
-            email: u.email
-        },
+        user: u,
         token: token
     });
 }
@@ -67,13 +67,11 @@ const login = async (req, res) => {
 
     const token = await generateJWT(user._id, user.name);
 
+    user.password = "";
+
     res.json({
         ok: true,
-        user: {
-            _id: user._id,
-            name: user.name,
-            email: user.email
-        },
+        user: user,
         token: token
     });
 }
@@ -85,13 +83,11 @@ const renewToken = async (req, res) => {
 
     const token = await generateJWT(_id, user.name);
 
+    user.password = "";
+
     res.json({
         ok: true,
-        user: {
-            _id,
-            name: user.name,
-            email: user.email
-        },
+        user,
         token
     });
 }
@@ -102,9 +98,11 @@ const updateUser = async (req, res) => {
     const oldUser = await User.findById(id);
     await oldUser.updateOne(newUser);
 
+    newUser.password = "";
+
     res.json({
         ok: true,
-        user: oldUser
+        user: newUser
     });
 }
 
