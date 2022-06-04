@@ -29,8 +29,9 @@ button {
 }
 
 .container {
-    min-width: 100vw;
     min-height: 100vh;
+    height: 100%;
+    width: 100%;
     background: rgb(4,6,8);
     background: linear-gradient(120deg, rgba(4,6,8,1) 10%, rgba(12,16,30,1) 39%);
 }

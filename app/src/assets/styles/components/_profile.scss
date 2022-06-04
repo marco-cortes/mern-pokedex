@@ -1,17 +1,25 @@
 .profile-container {
     max-width: 600px;
-    margin: 2rem auto;
+    margin: 0 auto;
+    padding: 2rem 0;
     width: 95%;
     p, h1, h3 {
         text-align: center;
     }
 }
 
+.profile-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
 .profile-btn {
     background-color: $blue;
     color: $light;
     font-size: 1rem;
-    width: 49%;
+    display: block;
+    width: calc(100%/2 - 1rem);
     padding: 1rem 0;
     border-radius: 30px;
     margin-top: 1rem;
@@ -20,13 +28,45 @@
     }
 }
 
-.profile-form {
-    margin-top: 4rem;
-}
-
 .btn-dark {
     background-color: $dark-gray;
     &:hover {
         background-color: darken($color: $dark-gray, $amount: 10%);
+    }
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    margin: 2rem auto;
+    margin-top: 4rem;
+    position: relative;
+}
+
+.user-photo {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.edit-photo {
+    color: $light;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    background-color: $blue;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+        background-color: darken($color: $blue, $amount: 10%);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .profile-btns {
+        display: block;
+    }
+    .profile-btn {
+        width: 100%;
     }
 }

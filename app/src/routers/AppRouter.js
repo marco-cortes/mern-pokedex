@@ -9,6 +9,7 @@ import { startCheckingAuth } from '../redux/actions/auth';
 import { Home } from '../views/Home';
 import { Profile } from '../views/Profile';
 import { MyPokemons } from '../views/MyPokemons';
+import { NewPokemon } from '../views/NewPokemon';
 
 export default function AppRouter() {
 
@@ -44,6 +45,11 @@ export default function AppRouter() {
           <Route path="/profile" element={
             <PrivateRouter>
               <Profile />
+            </PrivateRouter>
+          } />
+          <Route path="/new-pokemon" element={
+            <PrivateRouter>
+              <NewPokemon />
             </PrivateRouter>
           } />
           <Route path="/my-pokemons" element={

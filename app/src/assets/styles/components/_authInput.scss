@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0;
     margin-bottom: 1.5rem;
     padding: 1rem 2rem;
     border-radius: 20px;
@@ -19,7 +20,7 @@
 .auth-input-label {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 1.2rem);
+    width: calc(100% - 2rem);
 }
 
 .auth-label {
@@ -28,6 +29,7 @@
 }
 
 .auth-input {
+    width: 100%;
     font-size: 0.9rem;
     color: $light;
 }
@@ -50,5 +52,6 @@
         .auth-group {
             width: calc(100% - 4rem);
         }
+        
     }
 }

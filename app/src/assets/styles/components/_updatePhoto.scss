@@ -1,0 +1,45 @@
+#profile-photo-update {
+    display: none;
+}
+
+.profile-photo-update-label {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 1rem;
+    width: calc(100% - 2rem - 8px);
+    height: 200px;
+    border: 4px dashed $blue;
+    margin: 0 auto;
+}
+
+.profile-photo-update-icon {
+    font-size: 2rem;
+    color: $blue;
+}
+
+.profile-photo-update-icon-div {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: $light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-photo-update-text {
+    color: $light;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.profile-photo-update-name {
+    color: $blue;
+}

@@ -5,7 +5,7 @@ const PokemonSchema = new Schema({
         type: String,
         required: true
     },
-    type: {
+    types: {
         type: [String],
         required: true
     },
@@ -51,7 +51,7 @@ const PokemonSchema = new Schema({
         type: [String],
         required: true
     },
-    image: {
+    images: {
         type: [String],
         required: true
     },

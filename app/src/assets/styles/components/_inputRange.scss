@@ -1,0 +1,20 @@
+.group-range {
+    width: calc(100% - 4rem);
+    background-color: $dark;
+    padding: 0.5rem 2rem;
+}
+
+.input-range-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-range {
+    width: 90%;
+}
+
+.input-range-number {
+    width: 90%;
+    background-color: $light;
+}

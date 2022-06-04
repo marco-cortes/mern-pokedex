@@ -95,7 +95,16 @@ const renewToken = async (req, res) => {
 const updateUser = async (req, res) => {
     const { id } = req.params;
     const newUser = req.body;
+
     const oldUser = await User.findById(id);
+
+    if(newUser.password) {
+        const salt = bcrypt.genSaltSync();
+        newUser.password = bcrypt.hashSync(newUser.password, salt);
+    } else {
+        newUser.password = oldUser.password;
+    }
+    
     await oldUser.updateOne(newUser);
 
     newUser.password = "";
