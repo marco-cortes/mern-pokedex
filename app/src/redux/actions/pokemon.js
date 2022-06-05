@@ -9,11 +9,11 @@ export const savePokemon = (pokemon) => {
 
         const res = await authFetch("pokemon/new", pokemon, "POST");
         const body = await res.json();
-        if (body.error) {
+        if (!body.ok) {
             return Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: body.error
+                text: body.message
             })
         }
         dispatch(addPokemon(body.pokemon));
@@ -32,11 +32,11 @@ export const getPokemons = () => {
     return async (dispatch, getState) => {
         const res = await authFetch(`pokemon/`, {}, "GET");
         const body = await res.json();
-        if (body.error) {
+        if (!body.ok) {
             return Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: body.error
+                text: body.message
             })
         }
 
@@ -72,24 +72,21 @@ export const getMyPokemons = () => {
             return Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: body.error
+                text: body.message
             })
         }
 
         const pokemons = body.pokemons;
-
-        if(!pokemons.length <= 0)
-            dispatch(setPokemons(pokemons));
         
         const allPokemons = await Promise.all(
             pokemons.map(async pokemon => {
                 const resp = await authFetch(`user/get/${pokemon.user}`, null, "GET");
                 const bodyp = await resp.json();
-                if (bodyp.error) {
+                if (!bodyp.ok) {
                     return Swal.fire({
                         icon: "error",
                         title: "Oops...",
-                        text: bodyp.error
+                        text: bodyp.message
                     })
                 }
                 pokemon.user = bodyp.user;
@@ -100,6 +97,23 @@ export const getMyPokemons = () => {
         dispatch(setPokemons(allPokemons));
     }
 }
+
+export const getPokemon = (id) => {
+    return async (dispatch, getState) => {
+        const res = await authFetch(`pokemon/get/${id}`, null, "GET");
+        const body = await res.json();
+        if (!body.ok) {
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: body.message
+            })
+        }
+        console.log(body.pokemon);
+        dispatch(setPokemon(body.pokemon));
+    }
+}
+
 
 const addPokemon = (pokemon) => {
     return {
