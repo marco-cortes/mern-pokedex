@@ -4,7 +4,7 @@ const { validateJWT } = require("../middlewares/validate-jwt");
 
 
 const router = Router();
-
+router.get("/get/:id", [], getUserById);
 router.post("/register", [], registerUser);
 router.post("/login", [], login);
 router.get("/check", validateJWT, renewToken);

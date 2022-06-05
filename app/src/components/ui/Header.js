@@ -34,8 +34,8 @@ export const Header = () => {
                 {
                     user ?
                         <>
-                            <NavLink className={({ isActive }) => linkActive(isActive)} to={"/new-pokemon"}>New Pokemon</NavLink>
                             <NavLink className={({ isActive }) => linkActive(isActive)} to={"/my-pokemons"}>My Pokemons</NavLink>
+                            <NavLink className={({ isActive }) => linkActive(isActive)} to={"/new-pokemon"}>New Pokemon</NavLink>
                             <NavLink className={({ isActive }) => linkActive(isActive)} to={"/profile"}>Profile</NavLink>
                             <button className="btn-logout" onClick={logout} >Log Out</button>
                         </> : ""

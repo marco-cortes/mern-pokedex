@@ -31,6 +31,7 @@
 .link {
     color: $light-gray;
     margin: 0.5rem 1rem;
+    transition: 0.2s ease-in-out;
     &:hover {
         color: $light;
     }
@@ -66,13 +67,24 @@
     }
 
     .header-menu {
-        display: none;
+        //display: none;
         position: absolute;
+        display: flex;
+        visibility: hidden;
+        opacity: 0;
+
         left: 0;
         top: 100px;
         flex-direction: column;
         text-align: center;
         width: 100%;
+        background: rgb(4,6,8);
+        background: linear-gradient(120deg, rgba(4,6,8,1) 10%, rgba(12,16,30,1) 39%);
+        padding: 1rem 0;
+        z-index: 2;
+
+        transition: 0.3s ease-in-out;
+
         .btn-logout {
             width: 100%;
             max-width: 300px;
@@ -81,11 +93,13 @@
     }
 
     .menu-active {
-        display: flex !important;
+        //display: flex !important;
+        visibility: visible;
+        opacity: 1;
     }
 
     .link {
-        margin: 1rem auto;
+        margin: 1.5rem auto;
     }
 
 }

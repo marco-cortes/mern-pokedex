@@ -2,23 +2,23 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CardList } from "../components/card/CardList";
 import { Header } from "../components/ui/Header"
-import { getPokemons } from "../redux/actions/pokemon";
+import { getMyPokemons } from "../redux/actions/pokemon";
 
-export const Home = () => {
+export const Pokemons = () => {
 
-  const { pokemons } = useSelector(state => state.pokemon);
+  const { myPokemons } = useSelector(state => state.pokemon);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
 
-    dispatch(getPokemons());
+    dispatch(getMyPokemons());
   }, [dispatch]);
 
   return (
     <div className="container">
       <Header />
-      <CardList pokemons={pokemons} />
+      <CardList pokemons={myPokemons} />
     </div>
   )
 }

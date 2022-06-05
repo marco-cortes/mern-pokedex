@@ -41,10 +41,6 @@ const PokemonSchema = new Schema({
         specialDefense: {
             type: Number,
             required: true
-        },
-        total: {
-            type: Number,
-            required: true
         }
     },
     abilities: {

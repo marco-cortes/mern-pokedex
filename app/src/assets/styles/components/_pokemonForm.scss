@@ -9,3 +9,60 @@
         text-align: center;
     }
 }
+
+.input-ability {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 2rem);
+}
+
+.ability-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    max-width: 100px;
+}
+
+.abilities {
+    margin-top: 1.5rem;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: $dark;
+
+    .auth-group {
+        margin: 0 !important;
+        border-radius: 0;
+    }
+}
+
+.pokemon-abilities {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.ability {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    color: $light;
+    background-color: $blue;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.pokemon-photos {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $dark;
+    border-radius: 15px;
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    height: 200px;
+    margin: 0 auto;
+}

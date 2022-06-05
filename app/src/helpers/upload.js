@@ -1,10 +1,10 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase/firebase-config";
 
-export const uploadImages = async (user, images) => {
+export const uploadImages = async (user, pokemon, images) => {
     const urls = await Promise.all(
         images.map(async file => {
-            const filePath = `images/${user._id}/${file.name}`;
+            const filePath = `images/${user._id}/${pokemon.name}/${file.name}`;
             const fileRef = ref(storage, filePath)
             await uploadBytesResumable(fileRef, file);
             const url = await getDownloadURL(fileRef);

@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { startCheckingAuth } from '../redux/actions/auth';
 import { Home } from '../views/Home';
 import { Profile } from '../views/Profile';
-import { MyPokemons } from '../views/MyPokemons';
+import { Pokemons } from '../views/Pokemons';
 import { NewPokemon } from '../views/NewPokemon';
 
 export default function AppRouter() {
@@ -54,7 +54,7 @@ export default function AppRouter() {
           } />
           <Route path="/my-pokemons" element={
             <PrivateRouter>
-              <MyPokemons />
+              <Pokemons />
             </PrivateRouter>
           }
           />

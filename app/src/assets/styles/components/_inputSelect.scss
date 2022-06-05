@@ -1,0 +1,166 @@
+.input-select-container {
+    width: calc(100% - 4rem);
+    background-color: $dark;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px 20px 0 0;
+}
+
+.input-select-resp {
+    width: calc(100% - 4rem);
+    padding: 1rem 2rem;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: $dark;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 1.5rem;
+}
+
+.input-select {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 2rem);
+}
+
+.input-selection {
+    background-color: transparent;
+    border: none;
+    outline: none;
+	-moz-appearance: none;
+
+    background-color: $dark;
+    color: #757575;
+    font-size: 0.9rem;
+    border: 2px solid transparent;
+
+    &:focus {
+        color: #fff;
+    }
+}
+
+.input-selection::-ms-expand {
+    display: none;
+}
+
+.input-option {
+    color: #fff;
+}
+
+.type {
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.type-label {
+    margin-bottom: 5rem;
+}
+
+.types-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.type-img {
+    max-width: 25px;
+    margin-left: 0.3rem;
+}
+
+.normal {
+    color: $normal-light;
+    background-color: $normal;
+}
+
+.fighting {
+    color: $fighting-light;
+    background-color: $fighting;
+}
+
+.flying {
+    color: $flying-light;
+    background-color: $flying;
+}
+
+.poison {
+    color: $poison-light;
+    background-color: $poison;
+}
+
+.ground {
+    color: $ground-light;
+    background-color: $ground;
+}
+
+.bug {
+    color: $bug-light;
+    background-color: $bug;
+}
+
+.fire {
+    color: $fire-light;
+    background-color: $fire;
+}
+
+.water {
+    color: $water-light;
+    background-color: $water;
+}
+
+.grass {
+    color: $grass-light;
+    background-color: $grass;
+}
+
+.electric {
+    color: $electric-light;
+    background-color: $electric;
+}
+
+.psychic {
+    color: $psychic-light;
+    background-color: $psychic;
+}
+
+.ice {
+    color: $ice-light;
+    background-color: $ice;
+}
+
+.dragon {
+    color: $fairy-light;
+    background-color: $fairy;
+}
+
+.dark {
+    color: $dark-light;
+    background-color: $dark-color;
+}
+
+.fairy {
+    color: $fairy-light;
+    background-color: $fairy;
+}
+
+.rock {
+    color: $rock-light;
+    background-color: $rock;
+}
+
+.ghost {
+    color: $ghost-light;
+    background-color: $ghost;
+}
+
+.steel {
+    color: $steel-light;
+    background-color: $steel;
+}
+

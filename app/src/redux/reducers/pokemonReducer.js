@@ -2,7 +2,10 @@ import { types } from "../types";
 
 const initialState = {
     pokemons: [],
-    pokemon: {},
+    myPokemons: [],
+    pokemon: {
+        stats :{},
+    },
     loading: false,
     error: null
 }
@@ -21,11 +24,23 @@ export const pokemonReducer = (state = initialState, action) => {
                 loading: false,
                 pokemon: action.payload
             }
-        case types.savePokemon:
+        case types.loadMyPokemons:
             return {
                 ...state,
                 loading: false,
-                pokemons: [action.payload, ...state.pokemons]
+                myPokemons: action.payload
+            }
+        case types.addPokemon:
+            return {
+                ...state,
+                loading: false,
+                myPokemons: [action.payload, ...state.myPokemons]
+            }
+        case types.updatePokemon:
+            return {
+                ...state,
+                loading: false,
+                myPokemons: state.myPokemons.map(pokemon => pokemon._id === action.payload._id ? action.payload : pokemon)
             }
         case types.error:
             return {

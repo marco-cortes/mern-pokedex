@@ -35,3 +35,14 @@ button {
     background: rgb(4,6,8);
     background: linear-gradient(120deg, rgba(4,6,8,1) 10%, rgba(12,16,30,1) 39%);
 }
+
+.pokemon-list {
+    max-width: 1440px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: 95%;
+    padding: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

@@ -9,11 +9,14 @@ const getUserById = async (req, res) => {
 
     const user = await User.findById(id);
 
-    user.password = "";
-
     res.json({
         ok: true,
-        user
+        user: {
+            _id: user._id,
+            name: user.name,
+            lastName: user.lastName,
+            photo: user.photo,
+        }
     });
 }
 
