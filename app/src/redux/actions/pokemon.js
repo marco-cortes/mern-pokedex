@@ -98,7 +98,6 @@ export const getMyPokemons = () => {
         }
 
         const pokemons = body.pokemons;
-
         const allPokemons = await Promise.all(
             pokemons.map(async pokemon => {
                 const resp = await authFetch(`user/get/${pokemon.user}`, null, "GET");
