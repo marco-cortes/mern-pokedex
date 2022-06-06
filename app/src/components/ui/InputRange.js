@@ -10,7 +10,6 @@ export const InputRange = ({ title, name, icon, placeholder }) => {
     const handleChange = (e) => {
         pokemon.stats[name] = parseInt(e.target.value);
         setValue(e.target.value);
-        console.log(pokemon);
     }
 
     useEffect(() => {
