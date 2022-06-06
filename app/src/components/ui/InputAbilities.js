@@ -20,9 +20,10 @@ export const InputAbilities = () => {
         if (!pokemon.abilities)
             pokemon.abilities = [];
 
-        pokemon.abilities.push(ability);
+        if(!pokemon._id)
+            pokemon.abilities.push(ability);
 
-        //setAbilities([...abilities, ability]);
+        setAbilities([...abilities, ability]);
 
         setAbility("");
     }
@@ -30,6 +31,11 @@ export const InputAbilities = () => {
     const removeAbility = (e, ability) => {
         pokemon.abilities = pokemon.abilities.filter(item => item !== ability);
         setAbilities(abilities.filter(item => item !== ability));
+    }
+
+    const enter = (e) => {
+        if (e.keyCode === 13)
+            addAbility();
     }
 
     useEffect(() => {
@@ -47,7 +53,11 @@ export const InputAbilities = () => {
                 <div className="input-ability">
                     <div className="auth-input-label input-ability-container">
                         <label className="auth-label" htmlFor={"abilities"}>{"Abilities"}</label>
-                        <input className="auth-input" type={"text"} name={"abilities"} id={"abilities"} value={ability} onChange={handleChange} placeholder={"Input an ability"} />
+                        <input className="auth-input" type={"text"} name={"abilities"} id={"abilities"} 
+                        value={ability} 
+                        onChange={handleChange} 
+                        placeholder={"Input an ability"}
+                        onKeyDown={enter} />
                     </div>
                     <button className="profile-btn btn-dark ability-btn" type={"button"} onClick={addAbility}>{"Add"}</button>
                 </div>

@@ -14,9 +14,9 @@ export const InputRange = ({ title, name, icon, placeholder }) => {
     }
 
     useEffect(() => {
-        if(pokemon.stats[name])
+        if (pokemon.stats[name])
             setValue(pokemon.stats[name]);
-        else 
+        else
             setValue(0);
     }, [pokemon, name]);
 
@@ -30,7 +30,13 @@ export const InputRange = ({ title, name, icon, placeholder }) => {
                     width: "100%",
                 }}>
                     <label className="auth-label" htmlFor={name}>{title}</label> <br />
-                    <input type="range" className="input-range" name={name} value={value} onChange={handleChange}></input>
+                    <input type="range" className="input-range"
+                        name={name}
+                        value={value}
+                        onChange={handleChange}
+                        min="0"
+                        max="300"
+                    />
                     <input type="text" className="auth-input" value={value} onChange={handleChange} placeholder={placeholder}></input>
                 </div>
                 <i className={"fa-solid " + icon + " auth-icon "}></i>
