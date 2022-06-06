@@ -1,4 +1,4 @@
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase/firebase-config";
 
 export const uploadImages = async (user, pokemon, images) => {
@@ -21,4 +21,10 @@ export const uploadProfilePhoto = async (user, file) => {
     await uploadBytesResumable(fileRef, file);
     const url = await getDownloadURL(fileRef);
     return url;
+}
+
+export const deletePhoto = async (url) => {
+    const fileRef = ref(storage, url);
+    await deleteObject(fileRef);
+    //console.log(fileRef);
 }

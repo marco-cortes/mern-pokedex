@@ -39,10 +39,14 @@ button {
 .pokemon-list {
     max-width: 1440px;
     margin: 0 auto;
-    margin-top: 3rem;
     width: 95%;
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 2rem;
 }

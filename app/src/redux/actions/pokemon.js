@@ -7,13 +7,34 @@ export const savePokemon = (pokemon) => {
         const { user } = getState().auth;
         pokemon.user = user._id;
 
+        if(pokemon._id) {
+            const response = await authFetch("pokemon/update/" + pokemon._id, pokemon, "PUT");
+            const data = await response.json();
+            if(!data.ok) {
+                return Swal.fire({
+                    title: "Error!",
+                    text: data.message,
+                    icon: "error"
+                });
+            }
+
+            
+            dispatch(setPokemon(data.pokemon));
+            return Swal.fire({
+                title: "Success!",
+                text: "Pokemon updated.",
+                icon: "success"
+            });
+        }
+
+
         const res = await authFetch("pokemon/new", pokemon, "POST");
         const body = await res.json();
-        if (body.error) {
+        if (!body.ok) {
             return Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: body.error
+                text: body.message
             })
         }
         dispatch(addPokemon(body.pokemon));
@@ -32,11 +53,11 @@ export const getPokemons = () => {
     return async (dispatch, getState) => {
         const res = await authFetch(`pokemon/`, {}, "GET");
         const body = await res.json();
-        if (body.error) {
+        if (!body.ok) {
             return Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: body.error
+                text: body.message
             })
         }
 
@@ -72,24 +93,21 @@ export const getMyPokemons = () => {
             return Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: body.error
+                text: body.message
             })
         }
 
         const pokemons = body.pokemons;
 
-        if(!pokemons.length <= 0)
-            dispatch(setPokemons(pokemons));
-        
         const allPokemons = await Promise.all(
             pokemons.map(async pokemon => {
                 const resp = await authFetch(`user/get/${pokemon.user}`, null, "GET");
                 const bodyp = await resp.json();
-                if (bodyp.error) {
+                if (!bodyp.ok) {
                     return Swal.fire({
                         icon: "error",
                         title: "Oops...",
-                        text: bodyp.error
+                        text: bodyp.message
                     })
                 }
                 pokemon.user = bodyp.user;
@@ -98,6 +116,30 @@ export const getMyPokemons = () => {
         );
 
         dispatch(setPokemons(allPokemons));
+    }
+}
+
+export const getPokemon = (id) => {
+    return async (dispatch, getState) => {
+        const res = await authFetch(`pokemon/get/${id}`, null, "GET");
+        const body = await res.json();
+        if (!body.ok) {
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: body.message
+            })
+        }
+        dispatch(setPokemon(body.pokemon));
+    }
+}
+
+export const resetPokemon = () => {
+    return {
+        type: types.loadPokemon,
+        payload: {
+            stats: {}
+        }
     }
 }
 

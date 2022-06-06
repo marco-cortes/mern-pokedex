@@ -83,11 +83,11 @@ const updatePokemon = async (req, res) => {
         const { id } = req.params;
         const newPokemon = req.body;
         const oldPokemon = await Pokemon.findById(id);
-        const pokemonUpdated= await oldPokemon.updateOne(newPokemon);
+        await oldPokemon.updateOne(newPokemon);
 
         res.json({
             ok: true,
-            pokemon: pokemonUpdated
+            pokemon: newPokemon
         });
     
     } catch (error) {

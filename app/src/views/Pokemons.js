@@ -11,13 +11,16 @@ export const Pokemons = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
     dispatch(getMyPokemons());
   }, [dispatch]);
 
   return (
     <div className="container">
       <Header />
+      <div className="text-center">
+        <h3 className="auth-h3">My pokemons</h3>
+        <h1 className="auth-h1">My pokemons list<span className="auth-blue">.</span></h1>
+      </div>
       <CardList pokemons={myPokemons} />
     </div>
   )

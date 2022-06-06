@@ -7,6 +7,9 @@ export const Card = ({ pokemon }) => {
 
     const { user } = useSelector(state => state.auth);
 
+    if (!user)
+        return null;
+
     return (
         <div className="card">
             <div className="card-image">
@@ -26,22 +29,21 @@ export const Card = ({ pokemon }) => {
                 </div>
                 <div className="pokemon-types">
                     {
-                        <div className={`card-type ${pokemon.types[0].toLowerCase()}`}>
-                            <span>{pokemon.types[0]}</span>
-                            <img src={icons(`./Icon_${pokemon.types[0].toLowerCase()}.webp`)} className="card-type-image" alt={pokemon.types[0]} />
-                        </div>
+                        pokemon.types.map((type, index) => (
+                            <div className={`card-type ${type.toLowerCase()}`} key={index}>
+                                <img src={icons(`./Icon_${type.toLowerCase()}.webp`)} className="card-type-image" alt={type} />
+                            </div>
+                        ))
                     }
                 </div>
             </div>
             <div className="card-btns">
-                <Link to={`/pokemon/${pokemon._id}`} className="btn btn-primary" style={{
+                <Link to={user._id === pokemon.user._id ? `/my-pokemons/${pokemon._id}` : `/pokemon/${pokemon._id}`} className="btn btn-primary" style={{
                     width: user._id !== pokemon.user._id ? "100%" : "45%",
-                }}> 
-                    More info 
-                    <i className="fa-solid fa-angle-right"></i> 
+                }}>More info <i className="fa-solid fa-angle-right"></i>
                 </Link>
                 {
-                    user._id === pokemon.user._id && <Link to={`/pokemon/${pokemon._id}/edit`} className=" btn btn-secondary"> Edit <i className="fa-solid fa-pen"></i> </Link>
+                    user._id === pokemon.user._id && <Link to={`/my-pokemons/${pokemon._id}/edit`} className=" btn btn-secondary">Edit <i className="fa-solid fa-pen"></i> </Link>
                 }
             </div>
         </div>

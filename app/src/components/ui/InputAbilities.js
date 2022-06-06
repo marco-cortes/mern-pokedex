@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 
 export const InputAbilities = () => {
 
     const { pokemon } = useSelector(state => state.pokemon);
+    const [abilities, setAbilities] = useState(pokemon.abilities || []);
 
     const [ability, setAbility] = useState("");
 
@@ -13,18 +14,30 @@ export const InputAbilities = () => {
 
     const addAbility = (e) => {
 
-        if(ability.trim() === "") 
+        if (ability.trim() === "")
             return;
 
-        if(!pokemon.abilities)
+        if (!pokemon.abilities)
             pokemon.abilities = [];
 
         pokemon.abilities.push(ability);
 
-        setAbility("");
+        //setAbilities([...abilities, ability]);
 
-        console.log(pokemon);
+        setAbility("");
     }
+
+    const removeAbility = (e, ability) => {
+        pokemon.abilities = pokemon.abilities.filter(item => item !== ability);
+        setAbilities(abilities.filter(item => item !== ability));
+    }
+
+    useEffect(() => {
+        if (pokemon.abilities)
+            setAbilities(pokemon.abilities);
+        else
+            setAbilities([]);
+    }, [pokemon]);
 
     return (
         <div className="abilities">
@@ -41,11 +54,16 @@ export const InputAbilities = () => {
                 <i className={"fa-solid fa-wand-sparkles auth-icon "}></i>
             </div>
             {
-                pokemon.abilities &&  
+                abilities.length > 0 &&
                 <div className="pokemon-abilities">
                     {
-                        pokemon.abilities.map((ability, index) => (
-                            <span className="ability" key={index}>{ability}</span>
+                        abilities.map((ability, index) => (
+                            <div className="ability" key={index}>
+                                {ability}
+                                <div className="remove-ability" onClick={e => removeAbility(e, ability)}>
+                                    <i className="fa-solid fa-x"></i>
+                                </div>
+                            </div>
                         ))
                     }
                 </div>

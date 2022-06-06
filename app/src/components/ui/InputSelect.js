@@ -1,29 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { icons, types } from "../../helpers/pokemonTypes";
 
-export const InputSelect = ({ text, name, items:init }) => {
+export const InputSelect = ({ text, name }) => {
 
     const { pokemon } = useSelector(state => state.pokemon);
 
-    const [items, setItems] = useState(init);
-    const [selected, setSelected] = useState([]);
+    const [typesList, setTypesList] = useState(types);
+    const [selectedTypes, setSelectedTypes] = useState(pokemon.types || []);
 
     const handleChange = (e) => {
         const { value } = e.target;
-        
-        if(e.target.value === -1)
+
+        if (e.target.value === -1)
             return;
 
-        const id = parseInt(value);
-        const type = items.find(item => item.id === id);
-        
-        setItems(items.filter(item => item.id !== type.id));
-        setSelected([...selected, type]);
+        setTypesList(typesList.filter(item => item.name !== value));
+        setSelectedTypes([...selectedTypes, value]);
 
-        pokemon.types = [...selected, type.name];
-        console.log(pokemon);
+        if (!pokemon.types)
+            pokemon.types = [];
+
+        pokemon.types = [...pokemon.types, value];
+
+        //console.log(pokemon);
+
         e.target.value = -1;
     }
+
+    const handleDelete = (e, type) => {
+        pokemon.types = pokemon.types.filter(item => item !== type);
+        setSelectedTypes(selectedTypes.filter(item => item !== type));
+        setTypesList(types);
+    }
+
+    useEffect(() => {
+        if (selectedTypes.length > 0)
+            setTypesList(types.filter(item => !selectedTypes.includes(item.name)));
+    }, [selectedTypes]);
+
+    useEffect(() => {
+        if (pokemon.types)
+            setSelectedTypes(pokemon.types);
+        else
+            setSelectedTypes([]);
+    }, [pokemon])
 
     return (
         <>
@@ -33,9 +54,9 @@ export const InputSelect = ({ text, name, items:init }) => {
                     <select className="input-selection" name={name} onChange={handleChange}>
                         <option value={-1}>Seleccione una opción</option>
                         {
-                            items.map((item, index) => {
+                            typesList.map((type, index) => {
                                 return (
-                                    <option key={index} value={item.id}>{item.name}</option>
+                                    <option key={index} value={type.name}>{type.name}</option>
                                 )
                             })
                         }
@@ -48,14 +69,17 @@ export const InputSelect = ({ text, name, items:init }) => {
                     <label className="auth-label type-label" htmlFor={name}>{text}</label>
                     <div className="types-list">
                         {
-                            selected.map((item, index) => (
-                                <div key={index} className={"type " + item.name.toLowerCase()}>
-                                    <span>{item.name}</span>
-                                    <img src={item.icon} alt={item.name} className="type-img" />
+                            selectedTypes.map((type, index) => (
+                                <div key={index} className={"type " + type.toLowerCase()}>
+                                    <span>{type}</span>
+                                    <img src={icons("./Icon_" + type.toLowerCase() + ".webp")} alt={type} className="type-img" />
+                                    <div className="type-delete" onClick={e => handleDelete(e, type)}>
+                                        <i className="fa-solid fa-x"></i>
+                                    </div>
                                 </div>
                             ))
                         }
-                    </div>           
+                    </div>
                 </div>
                 <i className={"fa-solid fa-biohazard auth-icon "}></i>
             </div>

@@ -10,6 +10,8 @@ import { Home } from '../views/Home';
 import { Profile } from '../views/Profile';
 import { Pokemons } from '../views/Pokemons';
 import { NewPokemon } from '../views/NewPokemon';
+import { Pokemon } from '../views/Pokemon';
+import { EditPokemon } from '../views/EditPokemon';
 
 export default function AppRouter() {
 
@@ -24,42 +26,58 @@ export default function AppRouter() {
     return <div>Loading...</div>
 
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={
-            <PrivateRouter>
-              <Home />
-            </PrivateRouter>
-          } />
-          <Route path="/login" element={
-            <PublicRouter>
-              <Login />
-            </PublicRouter>
-          } />
-          <Route path="/register" element={
-            <PublicRouter>
-              <Register />
-            </PublicRouter>
-          } />
-          <Route path="/profile" element={
-            <PrivateRouter>
-              <Profile />
-            </PrivateRouter>
-          } />
-          <Route path="/new-pokemon" element={
-            <PrivateRouter>
-              <NewPokemon />
-            </PrivateRouter>
-          } />
-          <Route path="/my-pokemons" element={
-            <PrivateRouter>
-              <Pokemons />
-            </PrivateRouter>
-          }
-          />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <PrivateRouter>
+            <Home />
+          </PrivateRouter>
+        } />
+        <Route path="/login" element={
+          <PublicRouter>
+            <Login />
+          </PublicRouter>
+        } />
+        <Route path="/register" element={
+          <PublicRouter>
+            <Register />
+          </PublicRouter>
+        } />
+        <Route path="/profile" element={
+          <PrivateRouter>
+            <Profile />
+          </PrivateRouter>
+        } />
+        <Route path="/new-pokemon" element={
+          <PrivateRouter>
+            <NewPokemon />
+          </PrivateRouter>
+        } />
+        <Route path="/my-pokemons" element={
+          <PrivateRouter>
+            <Pokemons />
+          </PrivateRouter>
+        }
+        />
+        <Route path="/pokemon/:id" element={
+          <PrivateRouter>
+            <Pokemon />
+          </PrivateRouter>
+        }
+        />
+        <Route path="/my-pokemons/:id" element={
+          <PrivateRouter>
+            <Pokemon />
+          </PrivateRouter>
+        } 
+        />
+        <Route path="/my-pokemons/:id/edit" element={
+          <PrivateRouter>
+            <EditPokemon />
+          </PrivateRouter>
+        } 
+        />
+      </Routes>
+    </BrowserRouter>
   )
 }

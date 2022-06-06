@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
     if (exists) {
         return res.status(400).json({
             ok: false,
-            message: "El correo ya ha sido registrado."
+            message: "Email registred."
         });
     }
 
@@ -55,7 +55,7 @@ const login = async (req, res) => {
     if (!user) {
         return res.status(400).json({
             ok: false,
-            message: "Correo no registrado."
+            message: "User not found."
         });
     }
 
@@ -64,7 +64,7 @@ const login = async (req, res) => {
     if (!validPassword) {
         return res.status(400).json({
             ok: false,
-            message: "Contraseña incorrecta."
+            message: "Invalid password."
         });
     }
 
