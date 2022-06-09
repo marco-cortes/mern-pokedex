@@ -1,8 +1,14 @@
+import { useSelector } from "react-redux";
+import Loading from "../../views/Loading";
 import { Card } from "./Card";
 
 export const CardList = ({ pokemons }) => {
 
-    if (!pokemons) return <h1>Loading...</h1>;
+    const { loading } = useSelector(state => state.pokemon);
+
+    if (loading) return <div style={{
+        height: "60vh",
+    }}><Loading /></div>;
 
     return (
         <div className="pokemon-list  animate__animated animate__fadeIn">

@@ -12,6 +12,7 @@ import { Pokemons } from '../views/Pokemons';
 import { NewPokemon } from '../views/NewPokemon';
 import { Pokemon } from '../views/Pokemon';
 import { EditPokemon } from '../views/EditPokemon';
+import Loading from '../views/Loading';
 
 export default function AppRouter() {
 
@@ -23,7 +24,10 @@ export default function AppRouter() {
   }, [dispatch])
 
   if (loading)
-    return <div>Loading...</div>
+    return
+  <div className="container">
+    <Loading />
+  </div>
 
   return (
     <BrowserRouter>
@@ -69,13 +73,13 @@ export default function AppRouter() {
           <PrivateRouter>
             <Pokemon />
           </PrivateRouter>
-        } 
+        }
         />
         <Route path="/my-pokemons/:id/edit" element={
           <PrivateRouter>
             <EditPokemon />
           </PrivateRouter>
-        } 
+        }
         />
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startUploadPhoto } from "../../redux/actions/auth";
+import { closeModal } from "../../redux/actions/ui";
+import Loading from "../../views/Loading";
 
 export const UpdatePhoto = () => {
 
@@ -20,6 +22,7 @@ export const UpdatePhoto = () => {
         setLoading(true);
         dispatch(startUploadPhoto(user, image)).then(() => {
             setLoading(false);
+            dispatch(closeModal());
         });
     }
 
@@ -31,7 +34,7 @@ export const UpdatePhoto = () => {
             <input className="profile-photo-update" id="profile-photo-update" type="file" name="photo" onChange={fileChange} accept="image/png,image/jpeg" disabled={loading} />
             <label className="profile-photo-update-label" htmlFor="profile-photo-update">
                 {
-                    loading ? <h1>Loading...</h1>
+                    loading ? <Loading />
                         :
                         image ? <p className="profile-photo-update-name">{image.name}</p>
                             :

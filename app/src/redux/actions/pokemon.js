@@ -4,6 +4,7 @@ import { types } from "../types";
 
 export const savePokemon = (pokemon) => {
     return async (dispatch, getState) => {
+        dispatch(loading());
         const { user } = getState().auth;
         pokemon.user = user._id;
 
@@ -51,6 +52,7 @@ export const savePokemon = (pokemon) => {
 
 export const getPokemons = () => {
     return async (dispatch, getState) => {
+        dispatch(loading());
         const res = await authFetch(`pokemon/`, {}, "GET");
         const body = await res.json();
         if (!body.ok) {
@@ -85,6 +87,7 @@ export const getPokemons = () => {
 
 export const getMyPokemons = () => {
     return async (dispatch, getState) => {
+        dispatch(loading());
         const { user } = getState().auth;
 
         const res = await authFetch(`pokemon/user/${user._id}`, null, "GET");
@@ -120,6 +123,7 @@ export const getMyPokemons = () => {
 
 export const getPokemon = (id) => {
     return async (dispatch, getState) => {
+        dispatch(loading());
         const res = await authFetch(`pokemon/get/${id}`, null, "GET");
         const body = await res.json();
         if (!body.ok) {
@@ -167,5 +171,11 @@ const setAllPokemons = (pokemons) => {
     return {
         type: types.loadPokemons,
         payload: pokemons
+    }
+}
+
+const loading = () => {
+    return {
+        type: types.loading
     }
 }

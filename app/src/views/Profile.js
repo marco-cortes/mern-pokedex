@@ -9,11 +9,12 @@ import { Modal } from "../components/ui/Modal";
 import { useForm } from "../helpers/useForm";
 import { saveUser } from "../redux/actions/auth";
 import { showModal } from "../redux/actions/ui";
+import Loading from "./Loading";
 
 export const Profile = () => {
 
     const dispatch = useDispatch();
-
+    const { loading } = useSelector(state => state.auth);
     const user = useSelector(state => state.auth.user);
     const [state, setState] = useState(false);
 
@@ -27,6 +28,7 @@ export const Profile = () => {
 
     const save = (e) => {
         e.preventDefault();
+        form.photo = user.photo;
         dispatch(saveUser(form));
     }
 
@@ -41,8 +43,7 @@ export const Profile = () => {
     }
 
 
-    if (!user)
-        return <h1>Loading...</h1>;
+    if (loading) return <Loading />;
 
 
     return (
