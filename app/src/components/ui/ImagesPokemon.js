@@ -14,7 +14,6 @@ export const ImagesPokemon = () => {
 
 
     const fileChange = (e) => {
-        console.log(e.target.files)
         setImages([...images, ...e.target.files]);
         //setImages();
     }

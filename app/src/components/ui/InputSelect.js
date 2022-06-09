@@ -23,8 +23,6 @@ export const InputSelect = ({ text, name }) => {
 
         pokemon.types = [...pokemon.types, value];
 
-        //console.log(pokemon);
-
         e.target.value = -1;
     }
 

@@ -8,7 +8,6 @@ export const InputPokemon = ({ name, title, type, icon, placeholder }) => {
     const handleChange = (e) => {
         pokemon[name] = e.target.value;
         setValue(e.target.value);
-        //console.log(pokemon);
     }
 
     useEffect(() => {
