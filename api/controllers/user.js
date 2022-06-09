@@ -5,128 +5,209 @@ const User = require("../models/User");
 const { generateJWT } = require("../helpers/jwt");
 
 const getUserById = async (req, res) => {
-    const { id } = req.params;
+    try {
+        const { id } = req.params;
 
-    const user = await User.findById(id);
+        if (!id)
+            return res.json({
+                ok: false,
+                message: "Id not found"
+            })
 
-    res.json({
-        ok: true,
-        user: {
-            _id: user._id,
-            name: user.name,
-            lastName: user.lastName,
-            photo: user.photo,
-        }
-    });
+        const user = await User.findById(id);
+
+        if (!user)
+            return ({
+                ok: false,
+                message: "User not found"
+            })
+
+        res.json({
+            ok: true,
+            user: {
+                _id: user._id,
+                name: user.name,
+                lastName: user.lastName,
+                photo: user.photo,
+            }
+        });
+    } catch (e) {
+        res.json({
+            ok: false,
+            message: "Error in server",
+        })
+    }
 }
 
 const registerUser = async (req, res) => {
+    try {
+        const exists = await User.findOne({ email: req.body.email });
 
-    const exists = await User.findOne({ email: req.body.email });
+        if (exists) {
+            return res.status(400).json({
+                ok: false,
+                message: "Email registred."
+            });
+        }
 
-    if (exists) {
-        return res.status(400).json({
-            ok: false,
-            message: "Email registred."
+        const user = new User(req.body);
+
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(user.password, salt);
+
+        const u = await user.save();
+        const token = await generateJWT(u._id, u.name);
+
+        u.password = "";
+
+        res.json({
+            ok: true,
+            user: u,
+            token: token
         });
+    } catch (e) {
+        res.json({
+            ok: false,
+            message: "Error in server",
+        })
     }
-
-    const user = new User(req.body);
-
-    const salt = bcrypt.genSaltSync();
-    user.password = bcrypt.hashSync(user.password, salt);
-
-    const u = await user.save();
-    const token = await generateJWT(u._id, u.name);
-
-    u.password = "";
-
-    res.json({
-        ok: true,
-        user: u,
-        token: token
-    });
 }
 
 const login = async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
 
-    if (!user) {
-        return res.status(400).json({
-            ok: false,
-            message: "User not found."
+        if (!user) {
+            return res.status(400).json({
+                ok: false,
+                message: "User not found."
+            });
+        }
+
+        const validPassword = bcrypt.compareSync(password, user.password);
+
+        if (!validPassword) {
+            return res.status(400).json({
+                ok: false,
+                message: "Invalid password."
+            });
+        }
+
+        const token = await generateJWT(user._id, user.name);
+
+        user.password = "";
+
+        res.json({
+            ok: true,
+            user: user,
+            token: token
         });
-    }
-
-    const validPassword = bcrypt.compareSync(password, user.password);
-
-    if (!validPassword) {
-        return res.status(400).json({
+    } catch (e) {
+        res.json({
             ok: false,
-            message: "Invalid password."
-        });
+            message: "Error in server",
+        })
     }
-
-    const token = await generateJWT(user._id, user.name);
-
-    user.password = "";
-
-    res.json({
-        ok: true,
-        user: user,
-        token: token
-    });
 }
 
 const renewToken = async (req, res) => {
-    const { _id } = req;
+    try {
+        const { _id } = req;
 
-    const user = await User.findById(_id);
+        const user = await User.findById(_id);
 
-    const token = await generateJWT(_id, user.name);
+        const token = await generateJWT(_id, user.name);
 
-    user.password = "";
+        user.password = "";
 
-    res.json({
-        ok: true,
-        user,
-        token
-    });
+        res.json({
+            ok: true,
+            user,
+            token
+        });
+    } catch (e) {
+        res.json({
+            ok: false,
+            message: "Error in server",
+        })
+    }
 }
 
 const updateUser = async (req, res) => {
-    const { id } = req.params;
-    const newUser = req.body;
 
-    const oldUser = await User.findById(id);
+    try {
+        const { id } = req.params;
 
-    if(newUser.password) {
-        const salt = bcrypt.genSaltSync();
-        newUser.password = bcrypt.hashSync(newUser.password, salt);
-    } else {
-        newUser.password = oldUser.password;
+        if (!id)
+            return res.json({
+                ok: false,
+                message: "Id not found"
+            });
+
+        const newUser = req.body;
+
+        const oldUser = await User.findById(id);
+
+        if (!oldUser)
+            return res.json({
+                ok: false,
+                message: "User not found"
+            });
+
+        if (newUser.password) {
+            const salt = bcrypt.genSaltSync();
+            newUser.password = bcrypt.hashSync(newUser.password, salt);
+        } else {
+            newUser.password = oldUser.password;
+        }
+
+        await oldUser.updateOne(newUser);
+
+        newUser.password = "";
+
+        res.json({
+            ok: true,
+            user: newUser
+        });
+    } catch (e) {
+        res.json({
+            ok: false,
+            message: "Error in server",
+        })
     }
-    
-    await oldUser.updateOne(newUser);
-
-    newUser.password = "";
-
-    res.json({
-        ok: true,
-        user: newUser
-    });
 }
 
 const deleteUser = async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findById(id);
-    await user.deleteOne();
+    try {
+        const { id } = req.params;
 
-    res.json({
-        ok: true,
-        user
-    });
+        if (!id)
+            return res.json({
+                ok: false,
+                message: "Id not found"
+            })
+
+        const user = await User.findById(id);
+
+        if (!user)
+            return res.json({
+                ok: false,
+                message: "User not found"
+            })
+
+        await user.deleteOne();
+
+        res.json({
+            ok: true,
+            user
+        });
+    } catch (e) {
+        res.json({
+            ok: false,
+            message: "Error in server",
+        })
+    }
 }
 
 module.exports = {
