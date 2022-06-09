@@ -137,6 +137,36 @@ export const getPokemon = (id) => {
     }
 }
 
+export const getPokemonData = (id) => {
+    return async (dispatch, getState) => {
+        dispatch(loading());
+        const res = await authFetch(`pokemon/get/${id}`, null, "GET");
+        const body = await res.json();
+        if (!body.ok) {
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: body.message
+            })
+        }
+
+        const pokemon = body.pokemon;
+
+        const resp = await authFetch(`user/get/${pokemon.user}`, null, "GET");
+        const bodyp = await resp.json();
+        if (!bodyp.ok) {
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: bodyp.message
+            })
+        }
+        pokemon.user = bodyp.user;
+
+        dispatch(setPokemon(pokemon));
+    }
+}
+
 export const resetPokemon = () => {
     return {
         type: types.loadPokemon,
