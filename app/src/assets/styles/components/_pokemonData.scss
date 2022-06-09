@@ -1,0 +1,32 @@
+.pokemon-data{
+    width: 100%;
+    max-width: 450px;
+    max-height: 300px;
+    margin: 25px 40px 25px 40px;
+    position: relative;
+    background-color: rgb(1, 1, 49);
+    border-radius: 8%;
+    box-shadow: 0 3px 13px 1px rgb(0, 0, 9%);
+    display: flex-box;
+    color: white;
+    text-align: center;
+}
+
+.pokeAbilities{
+    font-weight: bold;
+}
+
+.pokeAbilities,.pokeHeight,.pokeWeight{
+    padding: 10px 0px 10px 0px;
+}
+
+p.pokeAbilities{
+    padding: 8px 0px 8px 0px;
+}
+
+.pokemon-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

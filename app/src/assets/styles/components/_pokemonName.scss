@@ -1,0 +1,21 @@
+.pokemonName{
+    width: 100%;
+    max-width: 450px;
+    max-height: 170px;
+    margin: 25px 40px 25px 40px;
+    position: relative;
+    background-color: rgb(1, 1, 49);
+    border-radius: 8%;
+    box-shadow: 0 3px 13px 1px rgb(0, 0, 9%);
+    display: flex-box;
+}
+
+.pokemon-title{
+    font-weight: bold;
+}
+
+.pokemon-title,.pokemon-type {
+    text-align: center;
+    padding: 8px 0px 8px 0px;
+    color: white;
+}

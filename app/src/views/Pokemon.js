@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Header } from "../components/ui/Header";
 import { getPokemon } from "../redux/actions/pokemon";
+import { PokemonContainer } from "../components/pokemon/PokemonContainer";
 
 export const Pokemon = () => {
 
@@ -22,7 +23,10 @@ export const Pokemon = () => {
     return (
         <div className="container">
             <Header />
-            Pokemon
+            <PokemonContainer pokemon={pokemon}/>
+            {
+                console.log(pokemon)
+            }
         </div>
     )
 }

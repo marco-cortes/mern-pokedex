@@ -1,0 +1,22 @@
+.pokemon-stats{
+    width: 100%;
+    max-width: 450px;
+    max-height: 400px;
+    margin: 25px 40px 25px 40px;
+    position: relative;
+    background-color: rgb(1, 1, 49);
+    border-radius: 8%;
+    box-shadow: 0 3px 13px 1px rgb(0, 0, 9%);
+    display: flex-box;
+    color: white;
+    text-align: center;
+}
+
+.statsTitle{
+    font-weight: bold;
+}
+
+p.pokemon-stats{
+    margin: 2px;
+    padding: 12px 0px 12px 0px;
+}
