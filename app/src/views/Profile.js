@@ -48,7 +48,7 @@ export const Profile = () => {
     return (
         <div className="container">
             <Header />
-            <div className="profile-container">
+            <div className="profile-container animate__animated animate__fadeIn">
                 <h3 className="auth-h3">My Profile</h3>
                 <h1 className="auth-h1">Edit your profile<span className="auth-blue">.</span></h1>
                 <ImageProfile user={user} show={showPhoto} />

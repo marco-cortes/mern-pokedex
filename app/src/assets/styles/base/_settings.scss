@@ -50,3 +50,7 @@ button {
     text-align: center;
     margin-top: 2rem;
 }
+
+.animate__animated.animate__fadeIn, .animate__animated.animate__fadeOut {
+    --animate-duration: 0.3s;
+  }

@@ -17,7 +17,7 @@ export const Home = () => {
   return (
     <div className="container">
       <Header />
-      <div className="text-center">
+      <div className="text-center  animate__animated animate__fadeIn">
         <h3 className="auth-h3">Pokemons</h3>
         <h1 className="auth-h1">Pokemon list<span className="auth-blue">.</span></h1>
       </div>

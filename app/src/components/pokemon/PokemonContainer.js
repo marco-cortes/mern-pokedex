@@ -5,7 +5,7 @@ import { PokemonSlider } from "./PokemonSlider";
 
 export const PokemonContainer = ({ pokemon }) => {
     return (
-        <div className="pokemon-container">
+        <div className="pokemon-container animate__animated animate__fadeIn">
             <PokemonSlider
                 images={pokemon.images} />
             <div className="pokeInfo">

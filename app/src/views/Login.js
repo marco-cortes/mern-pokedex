@@ -20,7 +20,7 @@ export default function Login() {
 
   return (
     <div className="auth-container">
-            <div className="auth-content"> 
+            <div className="auth-content animate__animated animate__fadeIn"> 
                 <h3 className="auth-h3">WELCOME TO POKÉDEX</h3>
                 <h1 className="auth-h1">Log In<span className="auth-blue">.</span></h1>
                 <p className="auth-p">Don't Have An Account? <Link className="auth-link" to={"/register"}>Sign Up</Link></p>

@@ -24,9 +24,6 @@ export const Pokemon = () => {
         <div className="container">
             <Header />
             <PokemonContainer pokemon={pokemon}/>
-            {
-                console.log(pokemon)
-            }
         </div>
     )
 }
