@@ -1,32 +1,71 @@
-.pokemon-data{
+.pokemon-data {
     width: 100%;
     max-width: 450px;
     max-height: 300px;
-    margin: 25px 40px 25px 40px;
     position: relative;
-    background-color: rgb(1, 1, 49);
+    background: rgb(33, 27, 67);
+    background: linear-gradient(24deg, rgba(33, 27, 67, 1) 6%, rgba(37, 29, 81, 1) 38%, rgba(30, 26, 58, 1) 67%);
     border-radius: 8%;
     box-shadow: 0 3px 13px 1px rgb(0, 0, 9%);
-    display: flex-box;
     color: white;
     text-align: center;
+
+    padding: 1rem 0;
 }
 
-.pokeAbilities{
+.pokeAbilities {
     font-weight: bold;
 }
 
-.pokeAbilities,.pokeHeight,.pokeWeight{
-    padding: 10px 0px 10px 0px;
+.pokeAbilities,
+.pokeHeight,
+.pokeWeight {
+    padding: 10px 0;
 }
 
-p.pokeAbilities{
-    padding: 8px 0px 8px 0px;
+.pokeHeight span,
+.pokeWeight span {
+    font-size: 0.8rem;
+    color: $light-gray;
 }
 
-.pokemon-container{
+.poke-info {
+    display: flex;
+    justify-content: space-evenly;
+    width: 250px;
+    max-width: 100%;
+}
+
+p.pokeAbilities {
+    padding: 8px 0;
+}
+
+.poke-abilities-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.poke-ability {
+    background-color: $blue;
+    padding: 0.5rem 1rem;
+    margin: 0 0.3rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba($color: #000000, $alpha: 0.5);
+}
+
+.pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     align-items: center;
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    margin-top: 3rem;
+}
+
+.pokeInfo {
+    padding: 2rem 0;
 }

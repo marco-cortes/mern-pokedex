@@ -1,22 +1,33 @@
-.pokemon-stats{
+.pokemon-stats {
     width: 100%;
     max-width: 450px;
     max-height: 400px;
-    margin: 25px 40px 25px 40px;
     position: relative;
-    background-color: rgb(1, 1, 49);
+    background: rgb(33, 27, 67);
+    background: linear-gradient(24deg, rgba(33, 27, 67, 1) 6%, rgba(37, 29, 81, 1) 38%, rgba(30, 26, 58, 1) 67%);
     border-radius: 8%;
     box-shadow: 0 3px 13px 1px rgb(0, 0, 9%);
-    display: flex-box;
     color: white;
     text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
 }
 
-.statsTitle{
+.statsTitle {
     font-weight: bold;
 }
 
-p.pokemon-stats{
+p.pokemon-stats {
     margin: 2px;
     padding: 12px 0px 12px 0px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    color: $light-gray;
+    margin-top: 0.3rem;
 }
