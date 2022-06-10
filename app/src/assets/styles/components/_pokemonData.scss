@@ -1,6 +1,5 @@
 .pokemon-data {
     width: 100%;
-    max-width: 450px;
     max-height: 300px;
     position: relative;
     background: rgb(33, 27, 67);
@@ -50,6 +49,7 @@ p.pokeAbilities {
     background-color: $blue;
     padding: 0.5rem 1rem;
     margin: 0 0.3rem;
+    margin-top: 0.5rem;
     font-size: 0.8rem;
     border-radius: 20px;
     box-shadow: 0 0 15px rgba($color: #000000, $alpha: 0.5);
@@ -68,4 +68,5 @@ p.pokeAbilities {
 
 .pokeInfo {
     padding: 2rem 0;
+    max-width: 250px;
 }
