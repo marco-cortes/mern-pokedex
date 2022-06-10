@@ -1,0 +1,32 @@
+.PokemonUser{
+    width: 90%;
+    max-width: 575px;
+    background: rgb(33,27,67);
+    background: linear-gradient(24deg, rgba(33,27,67,1) 6%, rgba(37,29,81,1) 38%, rgba(30,26,58,1) 67%);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    padding: 1rem 0;
+    margin: 0.5rem;
+    display: flex;
+}
+
+.user-photo{
+    height: 70%;
+    width: 25%;
+    display: flex;
+    padding: 15px;
+}
+
+.user-info{
+    display: inline-block;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    color: white;
+    margin-top: 0.3rem;
+    text-align: left;
+    font-weight: 400;
+    line-height: 3rem;
+    padding: 25px;
+}

@@ -118,9 +118,23 @@ export const getMyPokemons = () => {
     }
 }
 
+export const getPokemon = (id) => {
+    return async (dispatch, getState) => {
+        const res = await authFetch(`pokemon/get/${id}`, null, "GET");
+        const body = await res.json();
+        if (!body.ok) {
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: body.message
+            })
+        }
+        dispatch(setPokemon(body.pokemon));
+    }
+}
+
 export const getPokemonData = (id) => { 
-    return async (dispatch, getState) => { 
-        dispatch(loading()); 
+    return async (dispatch, getState) => {  
         const res = await authFetch(`pokemon/get/${id}`, null, "GET"); 
         const body = await res.json(); 
         if (!body.ok) { 

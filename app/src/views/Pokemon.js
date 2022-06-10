@@ -27,6 +27,9 @@ export const Pokemon = () => {
             {
                 console.log(pokemon)
             }
+            {
+                console.log(pokemon.user)
+            }
         </div>
     )
 }
