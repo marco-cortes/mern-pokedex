@@ -8,10 +8,12 @@ export const ImageProfile = ({ user, show }) => {
 
     return (
         <div className="profile-img">
-            {
-                user.photo ? <img src={user.photo} alt={user.name} className="user-photo" onError={imageError} />
-                    : <img src={imgUser} alt={user.name} className="user-photo" onError={imageError} />
-            }
+            <div className="image-container">
+                {
+                    user.photo ? <img src={user.photo} alt={user.name} className="user-photo" onError={imageError} />
+                        : <img src={imgUser} alt={user.name} className="user-photo" onError={imageError} />
+                }
+            </div>
             <i className="fa-solid fa-pen edit-photo" onClick={show}></i>
         </div>
     )

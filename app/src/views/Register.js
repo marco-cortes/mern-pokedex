@@ -30,7 +30,7 @@ export default function Register() {
 
     return (
         <div className="auth-container">
-            <div className="auth-content">
+            <div className="auth-content animate__animated animate__fadeIn">
                 <h3 className="auth-h3">WELCOME TO POKÉDEX</h3>
                 <h1 className="auth-h1">Create new account<span className="auth-blue">.</span></h1>
                 <p className="auth-p">Already A Member? <Link className="auth-link" to={"/login"}>Log in</Link></p>

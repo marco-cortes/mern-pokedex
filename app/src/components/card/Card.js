@@ -16,15 +16,13 @@ export const Card = ({ pokemon }) => {
                 <img src={pokemon.images[0]} alt={pokemon.name} />
             </div>
             <div className="card-content">
-                <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                }}>
-                    <img src={pokemon.user.photo} alt={pokemon.user.name} className="pokemon-user-photo" />
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <div className="card-img-container">
+                        <img src={pokemon.user.photo} alt={pokemon.user.name} className="pokemon-user-photo" />
+                    </div>
                     <div>
                         <h3 className="pokemon-name">{pokemon.name}</h3>
                         <h2 className="pokemon-user">By {pokemon.user.name} {pokemon.user.lastName}</h2>
-
                     </div>
                 </div>
                 <div className="pokemon-types">

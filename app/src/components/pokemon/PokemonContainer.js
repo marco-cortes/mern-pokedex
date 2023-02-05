@@ -5,19 +5,12 @@ import { PokemonSlider } from "./PokemonSlider";
 
 export const PokemonContainer = ({ pokemon }) => {
     return (
-        <div className="pokemon-container">
-            <PokemonSlider
-                images={pokemon.images} />
+        <div className="pokemon-container animate__animated animate__fadeIn">
+            <PokemonSlider images={pokemon.images} />
             <div className="pokeInfo">
-                <PokemonName
-                    name={pokemon.name}
-                    types={pokemon.types} />
-                <PokemonData
-                    abilities={pokemon.abilities}
-                    weight={pokemon.weight}
-                    height={pokemon.height} />
-                <PokemonStats
-                    stats={pokemon.stats} />
+                <PokemonName name={pokemon.name} types={pokemon.types} />
+                <PokemonData abilities={pokemon.abilities} weight={pokemon.weight} height={pokemon.height} />
+                <PokemonStats stats={pokemon.stats} />
             </div>
         </div>
     );

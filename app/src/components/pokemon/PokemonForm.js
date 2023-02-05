@@ -108,7 +108,7 @@ export const PokemonForm = ({ title, subtitle }) => {
         return false;
     }
     return (
-        <div className="new-pokemon-container">
+        <div className="new-pokemon-container animate__animated animate__fadeIn">
             <h3 className="auth-h3">{title || "New Pokemon"}</h3>
             <h1 className="auth-h1">{subtitle || "Start add a new Pokemon"}<span className="auth-blue">.</span></h1>
             <form className="profile-container" onSubmit={save}>

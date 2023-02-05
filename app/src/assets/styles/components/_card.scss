@@ -88,20 +88,39 @@
 .pokemon-name {
     color: $light;
     font-weight: 600;
+    width: 120px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .pokemon-user {
     font-size: 0.9rem;
     color: $light-gray;
     font-weight: 400;
+    width: 120px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .pokemon-user-photo {
+    width: 100%;
+    height: auto;
+}
+
+.card-img-container {
     width: 35px;
     height: 35px;
-    border-radius: 50%;
+    border-radius: 100%;
+    overflow: hidden;
     margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
 }
+
 
 .pokemon-types {
     display: flex;

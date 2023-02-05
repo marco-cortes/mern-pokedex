@@ -12,6 +12,7 @@ import { Pokemons } from '../views/Pokemons';
 import { NewPokemon } from '../views/NewPokemon';
 import { Pokemon } from '../views/Pokemon';
 import { EditPokemon } from '../views/EditPokemon';
+import Loading from '../components/ui/Loading';
 
 export default function AppRouter() {
 
@@ -23,7 +24,12 @@ export default function AppRouter() {
   }, [dispatch])
 
   if (loading)
-    return <div>Loading...</div>
+    return (
+      <div className="loading">
+        <h1 className="loading-text">Pokédex</h1>
+        <Loading />
+      </div>
+    )
 
   return (
     <BrowserRouter>

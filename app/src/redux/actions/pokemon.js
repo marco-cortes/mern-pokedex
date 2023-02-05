@@ -7,10 +7,10 @@ export const savePokemon = (pokemon) => {
         const { user } = getState().auth;
         pokemon.user = user._id;
 
-        if(pokemon._id) {
+        if (pokemon._id) {
             const response = await authFetch("pokemon/update/" + pokemon._id, pokemon, "PUT");
             const data = await response.json();
-            if(!data.ok) {
+            if (!data.ok) {
                 return Swal.fire({
                     title: "Error!",
                     text: data.message,
@@ -18,7 +18,7 @@ export const savePokemon = (pokemon) => {
                 });
             }
 
-            
+
             dispatch(setPokemon(data.pokemon));
             return Swal.fire({
                 title: "Success!",
@@ -51,6 +51,8 @@ export const savePokemon = (pokemon) => {
 
 export const getPokemons = () => {
     return async (dispatch, getState) => {
+        dispatch(startLoading())
+
         const res = await authFetch(`pokemon/`, {}, "GET");
         const body = await res.json();
         if (!body.ok) {
@@ -85,6 +87,7 @@ export const getPokemons = () => {
 
 export const getMyPokemons = () => {
     return async (dispatch, getState) => {
+        dispatch(startLoading())
         const { user } = getState().auth;
 
         const res = await authFetch(`pokemon/user/${user._id}`, null, "GET");
@@ -119,8 +122,9 @@ export const getMyPokemons = () => {
 }
 
 export const getPokemon = (id) => {
-    return async (dispatch, getState) => {
-        const res = await authFetch(`pokemon/get/${id}`, null, "GET");
+    return async (dispatch) => {
+        dispatch(startLoading())
+        const res = await authFetch(`pokemon/get/${id}`);
         const body = await res.json();
         if (!body.ok) {
             return Swal.fire({
@@ -130,6 +134,33 @@ export const getPokemon = (id) => {
             })
         }
         dispatch(setPokemon(body.pokemon));
+    }
+}
+
+export const getAllPokemon = (id) => {
+    return async (dispatch) => {
+        dispatch(startLoading())
+        const res = await authFetch(`pokemon/get/${id}`)
+        const body = await res.json();
+        if (!body.ok) {
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: body.message
+            })
+        }
+        const pokemon = body.pokemon;
+        const resp = await authFetch(`user/get/${pokemon.user}`, null, "GET");
+        const bodyp = await resp.json();
+        if (!bodyp.ok) {
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: bodyp.message
+            })
+        }
+        pokemon.user = bodyp.user;
+        dispatch(setPokemon(pokemon));
     }
 }
 
@@ -167,5 +198,11 @@ const setAllPokemons = (pokemons) => {
     return {
         type: types.loadPokemons,
         payload: pokemons
+    }
+}
+
+const startLoading = () => {
+    return {
+        type: types.loading
     }
 }
