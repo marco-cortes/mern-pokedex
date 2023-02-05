@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8dbe1e48.css",
+    "main.js": "/static/js/main.208b9eba.js",
+    "static/media/bg-register.jpg": "/static/media/bg-register.6b5801e8fe96f67901a9.jpg",
+    "static/media/logo.png": "/static/media/logo.b78fda9bebf9907afa48.png",
+    "static/media/user.svg": "/static/media/user.e27af67272cffba64b0aa4f01ac42727.svg",
+    "static/media/Icon_ground.webp": "/static/media/Icon_ground.e4814b81299f869b641e.webp",
+    "index.html": "/index.html",
+    "static/media/Icon_fire.webp": "/static/media/Icon_fire.b7c5cbab390ee9a717bc.webp",
+    "static/media/Icon_bug.webp": "/static/media/Icon_bug.45a45b3478a639c9c699.webp",
+    "static/media/Icon_dark.webp": "/static/media/Icon_dark.aca4e353fe6a36708eb4.webp",
+    "static/media/Icon_poison.webp": "/static/media/Icon_poison.ab131d4264ef9d2a1f9d.webp",
+    "static/media/Icon_grass.webp": "/static/media/Icon_grass.c8c53ddf9e1914c65899.webp",
+    "static/media/Icon_dragon.webp": "/static/media/Icon_dragon.500d4cc90449ddfb9906.webp",
+    "static/media/Icon_steel.webp": "/static/media/Icon_steel.90e5d92e3c016e262551.webp",
+    "static/media/Icon_fighting.webp": "/static/media/Icon_fighting.348b5ef47a12a9dbe7c7.webp",
+    "static/media/Icon_psychic.webp": "/static/media/Icon_psychic.ad245a9e4bb303ea02a2.webp",
+    "static/media/Icon_ghost.webp": "/static/media/Icon_ghost.5e504141073889e06e63.webp",
+    "static/media/Icon_water.webp": "/static/media/Icon_water.7dfde7653091c27362d2.webp",
+    "static/media/Icon_flying.webp": "/static/media/Icon_flying.38623cdf31005921bce1.webp",
+    "static/media/Icon_rock.webp": "/static/media/Icon_rock.35f578a5797b487db8af.webp",
+    "static/media/Icon_ice.webp": "/static/media/Icon_ice.ad96fdbb68936c070de1.webp",
+    "static/media/Icon_normal.webp": "/static/media/Icon_normal.85b998055fcdb44c619a.webp",
+    "static/media/Icon_fairy.webp": "/static/media/Icon_fairy.f2668be5c58c30524a4c.webp",
+    "static/media/Icon_electric.webp": "/static/media/Icon_electric.c3433517c34e787739e1.webp",
+    "main.8dbe1e48.css.map": "/static/css/main.8dbe1e48.css.map",
+    "main.208b9eba.js.map": "/static/js/main.208b9eba.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8dbe1e48.css",
+    "static/js/main.208b9eba.js"
+  ]
+}
